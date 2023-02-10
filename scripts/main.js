@@ -1,3 +1,4 @@
-export function hello() {
-    console.log("hello world")
+export function init() {
+    const tHead = document.getElementById("todosHead")
+    const tBody = document.getElementById("todosBody")
 }
