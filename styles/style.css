@@ -1,30 +1,135 @@
 body {
-    background-color: rgb(181, 181, 181);
+  background-color: #00b6ba;
+  font-family: Arial, Helvetica, sans-serif;
+  margin: 0;
+  overflow: hidden;
 }
 
 #container {
-    max-width: 50%;
-    height: 100vh;
-    margin-left: auto;
-    margin-right: auto;
+  max-width: 600px;
+  min-width: 300px;
+  height: 100vh;
+  margin-left: auto;
+  margin-right: auto;
+  box-shadow: 0px 0px 10px #163837;
 }
 
-#title {
+#todos-table {
+  width: 100%;
+  max-height: 80vh;
+  min-height: 80px;
 }
 
-#exportBtn {
-    border-radius: 20%;
+#nextTodo {
+  width: 90%;
 }
 
-#todosTable {
-    width: 100%;
-    height: 90vh;
+#todoDueDate {
+  text-align: center;
 }
 
-.left {
-    float: left;
+#addButton {
+  float: right;
+  background-color: #0c1f1e;
+  border-color: #00b6ba;
+  color: #00b6ba;
+  text-align: center;
+  /* padding: 14px 16px; */
+  text-decoration: none;
+  font-size: 15px;
 }
 
-.right {
-    float: right;
+th {
+  text-align: left;
+  padding: 10px;
+  font-size: 17px;
+}
+
+td {
+  word-break: break-all;
+  text-align: left;
+  padding: 5px;
+  font-size: 17px;
+}
+
+tr {
+  box-shadow: 0px 1px 5px rgb(100, 100, 100);
+}
+
+input {
+  float: left;
+  background-color: #40e0e3;
+  font-size: 15px;
+  border-width: 0px;
+  border-radius: 5px;
+}
+
+button {
+  cursor: pointer;
+}
+
+input.active {
+  background-color: #40e0e3;
+  border-width: 0px;
+}
+
+#todos-body td {
+  font-size: 15px;
+  transition: 0.2s;
+}
+
+#todos-body td:hover {
+  box-shadow: 0px 0px 5px #40e0e3;
+}
+
+.topnav {
+  overflow: hidden;
+  background-color: #1a403e;
+}
+
+.topnav a {
+  float: left;
+  color: #00b6ba;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+.topnav a:hover {
+  background-color: #163837;
+  color: #00b6ba;
+}
+
+.topnav a.active {
+  background-color: #0c1f1e;
+  color: #00b6ba;
+}
+
+.topnav button {
+  float: right;
+  background-color: #0c1f1e;
+  border-color: #00b6ba;
+  color: #00b6ba;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+.topnav button:hover {
+  opacity: 0.8;
+}
+
+.topnav button:active {
+  opacity: 0.5;
+}
+
+.dark {
+  background-color: #163837;
+  color: #00b6ba;
+}
+
+.light {
+  background-color: #00b6ba;
 }
