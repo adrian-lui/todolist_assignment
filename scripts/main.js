@@ -14,9 +14,12 @@ export function init() {
   tBody.addEventListener("mouseup", dragEnd);
 
   // create onclick callback funcs for nav top anchors
-  document.querySelectorAll("a").forEach((anchor) => {
-    anchor.addEventListener("click", addAnchorOnClick);
-  });
+  document
+    .getElementById("topnav")
+    .querySelectorAll("a")
+    .forEach((anchor) => {
+      anchor.addEventListener("click", addAnchorOnClick);
+    });
 
   // create onlick and Enter  key for adding todos row
   document.getElementById("addButton").addEventListener("click", addTodo);
@@ -121,7 +124,9 @@ export function init() {
   function addAnchorOnClick(e) {
     // add onclick callback funcs to nav bar anchors
     e.preventDefault();
+
     document
+      .getElementById("topnav")
       .querySelectorAll("a")
       .forEach((anchor) => anchor.classList.remove("active"));
     this.classList.add("active");
@@ -136,6 +141,7 @@ export function init() {
         break;
       case "urgent":
         const urgentTodos = Object.entries(todosList).sort((a, b) => {
+          if (!a[1].date && !b[1].date) return 0;
           if (!a[1].date) return -1;
           if (!b[1].date) return 1;
           return a[1].date < b[1].date ? 1 : -1;
@@ -191,11 +197,34 @@ Todo.prototype.createRow = function () {
 function refreshTodos(list, showArchived = false) {
   // refresh the todo list according to the anchor search, or after every row dragging or deleting to reformat the colors and position of todos
   const tBody = document.getElementById("todos-body");
+  const hashtagsSet = new Set();
   tBody.innerHTML = "";
   for (const [id, todo] of Object.entries(list)) {
     if (!todosList[id]) continue; // this line is for escaping empty id in the todosListOrdered after deleting
-    if (todo.archived === showArchived) todo.createRow(); // filter archived/unarchived todos
+    if (todo.archived === showArchived) {
+      // filter archived/unarchived todos
+      todo.createRow();
+      todo.hashtags.forEach((hashtag) => hashtagsSet.add(hashtag));
+    }
     if (showArchived)
       todo.row.querySelector(".done-btn").style.display = "none"; // hide the done-btn when archived
   }
+
+  // refresh hashtags, add onclick event to hashtags anchors
+  const hashtagsRow = document.getElementById("hashtagsRow");
+  hashtagsRow.innerHTML = hashtagsSet.size ? "" : "<a>#AddSomeHashtags!</a>";
+  hashtagsSet.forEach((hashtag) => {
+    const hashtagAnchor = document.createElement("a");
+    hashtagAnchor.textContent = hashtag;
+    hashtagAnchor.addEventListener("click", function (e) {
+      e.preventDefault();
+      for (const row of tBody.children) {
+        console.log(row.querySelector(".hashtags").textContent);
+        row.querySelector(".hashtags").textContent.split(",").includes(hashtag)
+          ? (row.style.display = "")
+          : (row.style.display = "none");
+      }
+    });
+    hashtagsRow.append(hashtagAnchor);
+  });
 }

@@ -9,7 +9,7 @@
   </head>
   <body>
     <div id="container">
-      <div class="topnav">
+      <div class="topnav" id="topnav">
         <a class="active" id="home" href="/?query=todos">TODOS</a>
         <a href="/?query=urgent">Urgent</a>
         <a href="/?query=archived">Archived</a>
@@ -33,6 +33,13 @@
                 <input type="date" id="todoDueDate">
                 <button id="addButton">Add</button>
             </th>
+          </tr>
+          <tr>
+              <th colspan="2">
+                  <div id="hashtagsRow">
+                      <a>#AddSomeHashtags!</a>
+                    </div>
+              </th>
           </tr>
         </thead>
         <tbody id="todos-body">

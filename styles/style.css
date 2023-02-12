@@ -36,6 +36,20 @@ body {
   font-size: 15px;
 }
 
+#hashtagsRow {
+  overflow: auto;
+}
+
+#hashtagsRow a {
+  font-size: 13px;
+  font-style: italic;
+  padding: 2px;
+  margin: 2px;
+  color: #00b6ba;
+  background-color: #1a403e;
+  border-radius: 5px;
+}
+
 th {
   text-align: left;
   padding: 10px;
