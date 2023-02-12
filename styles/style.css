@@ -1,14 +1,14 @@
 body {
-  background-color: #00b6ba;
+  background-image: linear-gradient(to top, #00b6ba, #86fdff);
   font-family: Arial, Helvetica, sans-serif;
   margin: 0;
-  overflow: hidden;
+  font-weight: bold;
 }
 
 #container {
   max-width: 600px;
-  min-width: 300px;
-  height: 100vh;
+  min-width: 375px;
+  min-height: 100vh;
   margin-left: auto;
   margin-right: auto;
   box-shadow: 0px 0px 10px #163837;
@@ -16,8 +16,6 @@ body {
 
 #todos-table {
   width: 100%;
-  max-height: 80vh;
-  min-height: 80px;
 }
 
 #nextTodo {
@@ -34,7 +32,6 @@ body {
   border-color: #00b6ba;
   color: #00b6ba;
   text-align: center;
-  /* padding: 14px 16px; */
   text-decoration: none;
   font-size: 15px;
 }
@@ -75,7 +72,7 @@ input.active {
 
 #todos-body td {
   font-size: 15px;
-  transition: 0.2s;
+  cursor: grab;
 }
 
 #todos-body td:hover {
@@ -126,10 +123,45 @@ input.active {
 }
 
 .dark {
-  background-color: #163837;
-  color: #00b6ba;
+  background-color: #86fdff;
+  color: #081537;
 }
 
 .light {
   background-color: #00b6ba;
+  color: #163837;
+}
+
+.date-hashtags {
+  display: inline-block;
+  font-weight: lighter;
+  width: 80px;
+}
+
+.date {
+  font-size: 14px;
+  padding: 1px;
+}
+
+.hashtags {
+  font-size: 13px;
+  font-style: italic;
+  padding: 1px;
+}
+
+.todo-buttons {
+  float: right;
+  margin: auto;
+}
+
+.done-btn {
+  background-color: #4373f0;
+  color: #ffff1b;
+  font-weight: bold;
+}
+
+.remove-btn {
+  background-color: #eb5067;
+  color: #081537;
+  font-weight: bold;
 }
