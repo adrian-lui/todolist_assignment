@@ -19,7 +19,7 @@ body {
 }
 
 #nextTodo {
-  width: 90%;
+  width: 95%;
 }
 
 #todoDueDate {
@@ -56,7 +56,7 @@ tr {
 input {
   float: left;
   background-color: #40e0e3;
-  font-size: 15px;
+  font-size: 17px;
   border-width: 0px;
   border-radius: 5px;
 }
@@ -71,6 +71,7 @@ input.active {
 }
 
 #todos-body td {
+  padding: 10px;
   font-size: 15px;
   cursor: grab;
 }

@@ -32,6 +32,7 @@ export function init() {
 
   function addExportJSON() {
     console.log(JSON.stringify(todosList));
+    alert("Successfully exported TODOS as JSON format to the console.");
   }
 
   function saveDragRow(e) {
