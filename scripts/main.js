@@ -205,6 +205,7 @@ function refreshTodos(list, showArchived = false) {
       // filter archived/unarchived todos
       todo.createRow();
       todo.hashtags.forEach((hashtag) => hashtagsSet.add(hashtag));
+      if (new Date(todo.date).getTime() <= Date.now()) todo.row.style.backgroundColor = "red"
     }
     if (showArchived)
       todo.row.querySelector(".done-btn").style.display = "none"; // hide the done-btn when archived
