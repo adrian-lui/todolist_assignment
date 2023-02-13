@@ -97,17 +97,17 @@ export function init() {
 
   function addTodo() {
     // add todo row to tBody
-    if (!nextTodo.value) return;
     const dateValue = todoDueDate.value;
     const todoValue = nextTodo.value
-      .split(" ")
-      .filter((word) => word.at(0) !== "#")
-      .join(" ");
-
+    .split(" ")
+    .filter((word) => word.at(0) !== "#")
+    .join(" ");
+    if (!todoValue || !todoValue.trim()) return;
+    
     // get hashtags
     const hashtags = nextTodo.value
       .split(" ")
-      .filter((word) => word.at(0) == "#" && word.length > 1);
+      .filter((word) => word.at(0) == "#");
 
     // create object of Todo class
     const todo = new Todo(todoValue, dateValue, hashtags);
@@ -145,7 +145,7 @@ export function init() {
           if (!a[1].date) return -1;
           if (!b[1].date) return 1;
           return a[1].date < b[1].date ? 1 : -1;
-        });
+        })
         refreshTodos(Object.fromEntries(urgentTodos));
         break;
       case "archived":
@@ -174,7 +174,7 @@ Todo.prototype.createRow = function () {
       <td>${this.todo}</td>
       <td>
           <div class="date-hashtags">
-              <div class="date">${this.date}</div>
+              <div class="date">${this.date.replace("T", " ")}</div>
               <div class="hashtags">${this.hashtags}</div>
           </div>
           <div class="todo-buttons">
@@ -219,7 +219,6 @@ function refreshTodos(list, showArchived = false) {
     hashtagAnchor.addEventListener("click", function (e) {
       e.preventDefault();
       for (const row of tBody.children) {
-        console.log(row.querySelector(".hashtags").textContent);
         row.querySelector(".hashtags").textContent.split(",").includes(hashtag)
           ? (row.style.display = "")
           : (row.style.display = "none");

@@ -24,6 +24,7 @@ body {
 
 #todoDueDate {
   text-align: center;
+  font-size: 14px;
 }
 
 #addButton {
@@ -33,7 +34,7 @@ body {
   color: #00b6ba;
   text-align: center;
   text-decoration: none;
-  font-size: 15px;
+  font-size: 13px;
 }
 
 #hashtagsRow {
@@ -48,6 +49,7 @@ body {
   color: #00b6ba;
   background-color: #1a403e;
   border-radius: 5px;
+  cursor:pointer;
 }
 
 th {
@@ -150,7 +152,7 @@ input.active {
 .date-hashtags {
   display: inline-block;
   font-weight: lighter;
-  width: 80px;
+  width: 130px;
 }
 
 .date {
