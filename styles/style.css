@@ -152,6 +152,7 @@ input.active {
 .date-hashtags {
   display: inline-block;
   font-weight: lighter;
+  text-align: center;
   width: 130px;
 }
 
@@ -172,8 +173,8 @@ input.active {
 }
 
 .done-btn {
-  background-color: #4373f0;
-  color: #ffff1b;
+  background-color: #0BDB69;
+  color: #69270F;
   font-weight: bold;
 }
 

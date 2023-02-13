@@ -28,14 +28,35 @@ export function init() {
     addTodo();
   });
 
-  // create export button for logging the json object to the console
+  // create export button to iCal format, which can be imported to icalendar or google calendar 
   document
     .getElementById("export-btn")
-    .addEventListener("click", addExportJSON);
+    .addEventListener("click", addExportiCAL);
 
-  function addExportJSON() {
-    console.log(JSON.stringify(todosList));
-    alert("Successfully exported TODOS as JSON format to the console.");
+  function addExportiCAL() {
+    let iCal = `BEGIN:VCALENDAR
+    VERSION:2.0
+    PRODID:-//ZContent.net//Zap Calendar 1.0//EN
+    CALSCALE:GREGORIAN
+    METHOD:PUBLISH
+    `
+
+    for (const todo of Object.entries(todosList)) {
+      iCal += `BEGIN:VEVENT
+      UID:${todo[0]}
+      DTSTAMP:${new Date(Number.parseInt(todo[0])).toISOString().replaceAll("-", "").replaceAll(":", "").slice(0,-7)}00
+      DTSTART:${todo[1].date.replaceAll("-", "").replaceAll(":", "")? todo[1].date.replaceAll("-", "").replaceAll(":", ""):new Date(Number.parseInt(todo[0])).toISOString().replaceAll("-", "").replaceAll(":", "").slice(0,-7)}00
+      DTEND:${todo[1].date.replaceAll("-", "").replaceAll(":", "")? todo[1].date.replaceAll("-", "").replaceAll(":", ""):new Date(Number.parseInt(todo[0])).toISOString().replaceAll("-", "").replaceAll(":", "").slice(0,-7)}00
+      SUMMARY:${todo[1].todo}
+      CATEGORIES:${todo[1].hashtags}
+      STATUS:CONFIRMED
+      END:VEVENT
+      `
+    }
+
+    iCal += `END:VCALENDAR`
+    console.log(iCal.replaceAll("  ", ""))
+    window.open( "data:text/calendar;charset=utf8," + iCal.replaceAll("  ", ""));
   }
 
   function saveDragRow(e) {
@@ -60,7 +81,7 @@ export function init() {
     // move dragRow during mousemove event
     e.preventDefault();
     if (!document.getElementById("home").classList.contains("active")) return;
-    if (!dragging) return;
+    if (!dragging || !dragRow) return;
 
     // move dragRow when it is dragged on top of another row by comparing their Y offsets
     const rows = e.currentTarget.children;
@@ -85,7 +106,7 @@ export function init() {
   function dragEnd(e) {
     // end of dragging event, save the new order of rows to todosListOrdered and refresh the coloured rows
     e.preventDefault();
-    if (!document.getElementById("home").classList.contains("active")) return;
+    if (!document.getElementById("home").classList.contains("active") || !dragRow) return;
     dragging = false;
     dragRow.style.opacity = 1;
     todosListOrdered = [];
@@ -205,7 +226,7 @@ function refreshTodos(list, showArchived = false) {
       // filter archived/unarchived todos
       todo.createRow();
       todo.hashtags.forEach((hashtag) => hashtagsSet.add(hashtag));
-      if (new Date(todo.date).getTime() <= Date.now()) todo.row.style.backgroundColor = "red"
+      if (new Date(todo.date).getTime() <= Date.now()) todo.row.querySelector(".date").style.backgroundColor = "#eb5067"
     }
     if (showArchived)
       todo.row.querySelector(".done-btn").style.display = "none"; // hide the done-btn when archived
