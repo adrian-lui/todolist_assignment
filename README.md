@@ -1,4 +1,4 @@
-# todolist_assignment
+# Todo List assignment
 This repo is created for submitting the todo list assignment for Crosskey Frontend Summer Trainee position.
 Go to the following link for preview:
 
