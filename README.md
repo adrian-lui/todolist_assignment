@@ -1,6 +1,6 @@
 # Todo List assignment
 This repo is created for submitting the todo list assignment for Crosskey Frontend Summer Trainee position.
-Go to the following link for preview:
+Go to the following link for preview: http://adrianlui.dcnet.fi/
 
 <img width="647" alt="Screenshot 2023-02-13 at 20 34 05" src="https://user-images.githubusercontent.com/113538395/218544557-57d7e5cb-a42f-4749-bad1-0202619a2d50.png">
 
