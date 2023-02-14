@@ -29,7 +29,7 @@ This todo list web app is designed in a minimalist way. Only essential buttons (
 - This web app is responsive to computer or phone users (except phone user cannot drag the row of todos yet)
 - The main color used is #00b6ba which I assume is the company color of Crosskey. The complementary colors are generated from the Adobe Color analyzer tool.
 
-
-
+# Technology
+This todo list app is written in pure JS, HTML and CSS. It is usable and responsive at latest version of Chrome and Safari.
 
 
