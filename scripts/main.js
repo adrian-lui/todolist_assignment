@@ -119,7 +119,7 @@ function saveDragRow(e) {
   // save the row to be dragged
   e.preventDefault();
   // limit dragging only for all todos page
-  if (!document.getElementById("home").classList.contains("active")) return;
+  if (!document.getElementById("home").classList.contains("active") || e.target.nodeName === "BUTTON") return;
 
   // start dragging, save the row element to dragRow
   dragging = true;
@@ -137,7 +137,7 @@ function moveDragRow(e) {
   // move dragRow during mousemove event
   e.preventDefault();
   if (!document.getElementById("home").classList.contains("active")) return;
-  if (!dragging || !dragRow) return;
+  if (!dragging || !dragRow || e.target.nodeName === "BUTTON") return;
 
   // move dragRow when it is dragged on top of another row by comparing their Y offsets
   const rows = e.currentTarget.children;
@@ -162,7 +162,7 @@ function moveDragRow(e) {
 function dragEnd(e) {
   // end of dragging event, save the new order of rows to todosListOrdered and refresh the coloured rows
   e.preventDefault();
-  if (!document.getElementById("home").classList.contains("active") || !dragRow) return;
+  if (!document.getElementById("home").classList.contains("active") || !dragRow || e.target.nodeName === "BUTTON") return;
   dragging = false;
   dragRow.style.opacity = 1;
   todosListOrdered = [];
